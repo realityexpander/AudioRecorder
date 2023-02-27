@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
 import com.plcoding.audiorecorder.playback.AudioPlayerAndroidImpl
 import com.plcoding.audiorecorder.record.AudioRecorderAndroidImpl
@@ -70,6 +72,42 @@ class MainActivity : ComponentActivity() {
                         Text(text = "Stop playing")
                     }
                 }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+@Composable
+fun DefaultPreview() {
+    AudioRecorderTheme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(onClick = {
+                // no op
+            }) {
+                Text(text = "Start recording")
+            }
+
+            Button(onClick = {
+                // no op
+            }) {
+                Text(text = "Stop recording")
+            }
+
+            Button(onClick = {
+                // no op
+            }) {
+                Text(text = "Play")
+            }
+
+            Button(onClick = {
+                // no op
+            }) {
+                Text(text = "Stop playing")
             }
         }
     }
