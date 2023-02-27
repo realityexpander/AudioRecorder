@@ -3,13 +3,12 @@ package com.plcoding.audiorecorder.record
 import android.content.Context
 import android.media.MediaRecorder
 import android.os.Build
-import android.provider.MediaStore.Audio.Media
 import java.io.File
 import java.io.FileOutputStream
 
-class AndroidAudioRecorder(
+class AudioRecorderAndroidImpl(
     private val context: Context
-): AudioRecorder {
+): IAudioRecorder {
 
     private var recorder: MediaRecorder? = null
 

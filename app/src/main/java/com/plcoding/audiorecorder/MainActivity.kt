@@ -8,27 +8,23 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
-import com.plcoding.audiorecorder.playback.AndroidAudioPlayer
-import com.plcoding.audiorecorder.record.AndroidAudioRecorder
+import com.plcoding.audiorecorder.playback.AudioPlayerAndroidImpl
+import com.plcoding.audiorecorder.record.AudioRecorderAndroidImpl
 import com.plcoding.audiorecorder.ui.theme.AudioRecorderTheme
 import java.io.File
 
 class MainActivity : ComponentActivity() {
 
     private val recorder by lazy {
-        AndroidAudioRecorder(applicationContext)
+        AudioRecorderAndroidImpl(applicationContext)
     }
 
     private val player by lazy {
-        AndroidAudioPlayer(applicationContext)
+        AudioPlayerAndroidImpl(applicationContext)
     }
 
     private var audioFile: File? = null
@@ -55,16 +51,19 @@ class MainActivity : ComponentActivity() {
                     }) {
                         Text(text = "Start recording")
                     }
+
                     Button(onClick = {
                         recorder.stop()
                     }) {
                         Text(text = "Stop recording")
                     }
+
                     Button(onClick = {
                         player.playFile(audioFile ?: return@Button)
                     }) {
                         Text(text = "Play")
                     }
+
                     Button(onClick = {
                         player.stop()
                     }) {
